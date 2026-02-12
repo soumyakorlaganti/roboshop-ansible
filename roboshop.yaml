@@ -1,7 +1,7 @@
 # ansible-playbook -i localhost, \ -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}' \ roboshop.yaml
 
 - name: create ec2 and r53 records
-  hosts: all  
+  hosts: local  
   connection: local
   vars:
     sg_id: sg-0a4e2040f42d9d840
@@ -20,7 +20,7 @@
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
       name: "{{ item }}-{{ env }}"
-      wait: false
+      # wait: false
       tags: # This is meta data it will be useful for filtering the data
         Project: roboshop
         Component: "{{ item }}"
