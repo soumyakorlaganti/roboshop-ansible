@@ -13,7 +13,7 @@
   - name: enable and start nginx
     ansible.builtin.service:
       name: nginx
-      state: present
+      state: started
       enabled: yes
 
   - name: remove default content
